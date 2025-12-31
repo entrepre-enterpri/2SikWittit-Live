@@ -1,0 +1,8 @@
+{
+  "name": "2sikwittit-live",
+  "private": true,
+  "dependencies": {
+    "stripe": "^17.0.0"
+  }
+}
+

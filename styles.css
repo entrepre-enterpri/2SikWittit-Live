@@ -1,0 +1,383 @@
+/* === FONT IMPORTS (TOP OF FILE) === */
+@font-face {
+  font-family: "Blacksword";
+  src: url("../fonts/Blacksword.otf") format("opentype"),
+       url("../fonts/Blacksword.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ==============
+   RESET + BODY
+   ============== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* =========================
+   MALEVOLETTE VIDEO
+   ========================= */
+.malevolette-video-section {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 420px;
+  overflow: hidden;
+  background: #000;
+}
+
+.malevolette-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
+   HERO
+   ========================= */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 40px 20px 20px;
+  background: #050505;
+}
+
+.hero .overlay {
+  position: relative;
+  z-index: 2;
+}
+
+/* === Blacksword for Hero Title Only === */
+.hero h1 {
+  font-family: "Blacksword", cursive !important;
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  color: #ddd;
+}
+
+.hero-img {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto 0;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.8);
+}
+
+/* =========================
+   SLIDESHOW UNDER HERO
+   ========================= */
+.slideshow {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 18px 16px 26px;
+  background: #000;
+  scrollbar-width: none;
+}
+
+.slideshow::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 auto;
+  height: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.75);
+}
+
+/* =========================
+   TEAR SECTIONS – FADE REVEAL
+   ========================= */
+.tear-section {
+  position: relative;
+  width: 100%;
+  margin: 40px 0;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+/* base image always visible */
+.tear-reveal {
+  width: 100%;
+  display: block;
+}
+
+/* hidden image that fades in on hover/tap */
+.reveal-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease-in-out;
+}
+
+/* desktop hover */
+.tear-section:hover .reveal-image {
+  opacity: 1;
+}
+
+/* tap/click (JS will toggle .revealed) */
+.tear-section.revealed .reveal-image {
+  opacity: 1;
+}
+
+/* if any blackout divs are still in HTML, hide them so they don't block */
+.blackout {
+  display: none;
+}
+
+/* =========================
+   PUPPY PAWS SECTION
+   ========================= */
+#puppy-paws-donation {
+  color: #222;
+}
+
+/* =========================
+   PRODUCTS
+   ========================= */
+.products {
+  padding: 60px 20px;
+  background: #050505;
+}
+
+.products h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.product-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.product-card {
+  background: #111;
+  padding: 18px 16px 22px;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
+}
+
+.product-card img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  margin-bottom: 14px;
+}
+
+/* make Trinkets image smaller like you wanted */
+#trinkets-card img {
+  max-height: 160px;
+}
+
+.product-title {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.product-tagline {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 14px;
+}
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #000;
+  border: 1px solid #39ff14;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow:
+    0 0 10px rgba(57, 255, 20, 0.6),
+    0 0 20px rgba(57, 255, 20, 0.4),
+    inset 0 0 8px rgba(57, 255, 20, 0.4);
+}
+
+.btn-buy {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #39ff14;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   ABOUT + BEE
+   ========================= */
+.about {
+  padding: 60px 20px 80px;
+  background: #000;
+}
+
+.about h2 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: #39ff14;
+}
+
+.about p {
+  margin-bottom: 16px;
+  color: #e0e0e0;
+}
+
+.about em {
+  color: #ff6f61;
+}
+
+.bee-wrapper {
+  margin: 30px 0 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.bee {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.bee-body {
+  width: 100%;
+  display: block;
+}
+
+/* simple wings */
+.wing {
+  position: absolute;
+  top: 10px;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  animation: flap 0.3s infinite ease-in-out;
+}
+
+.left-wing {
+  left: -5px;
+}
+
+.right-wing {
+  right: -5px;
+}
+
+@keyframes flap {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.9;
+  }
+}
+
+#bees-slogan {
+  margin: 10px 0 12px;
+  font-style: italic;
+  color: #ffcf33;
+}
+
+.bee-link {
+  color: #39ff14;
+  text-decoration: none;
+  font-weight: 600;
+}
+/* === Bee Link Styling === */
+.bee-link {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.bee-img {
+  width: 180px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.bee-img:hover {
+  transform: scale(1.1);
+}
+
+.bee-quote {
+  text-align: center;
+  font-style: italic;
+  margin-top: 10px;
+  color: #39ff14;
+  cursor: pointer;
+}
+
+/* =========================
+   AUDIO BUTTONS
+   ========================= */
+.btn-audio {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #39ff14;
+  background: transparent;
+  color: #39ff14;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+footer {
+  background: #050505;
+  text-align: center;
+  padding: 18px 10px 24px;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+footer a {
+  color: #39ff14;
+  text-decoration: none;
+}

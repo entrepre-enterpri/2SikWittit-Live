@@ -1,0 +1,419 @@
+<====styles.css====>
+/* Reset & Base */
+/* === Blacksword Font Import === */
+@font-face {
+  font-family: "Blacksword";
+  src: url("fonts/Blacksword.otf") format("opentype"),
+       url("fonts/Blacksword.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* USE BLACKSWORD ONLY FOR MAIN HERO TITLE */
+.hero-title {
+  font-family: "Blacksword", cursive;
+  font-size: 3.2rem;
+  letter-spacing: 0.03em;
+}
+
+/* Standard font reset for all text */
+p, h2, h3, h4, h5, h6 {
+  font-family: "Arial", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Arial", sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+} /* === Smart Crop: Center-Top Focus === */
+.product-card img,
+.tear-reveal,
+.reveal-image,
+.slide {
+  object-fit: cover;
+  object-position: center top;
+}
+/* RoadRage font for Damaged heading */
+@font-face {
+  font-family: "RoadRage";
+  src: url("fonts/RoadRage.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* =========================
+   Malevolette Video (Cinematic)
+   ========================= */
+.malevolette-video-section {
+  position: relative;
+  width: 100%;
+  max-height: 520px;
+  overflow: hidden;
+  background: #000;
+}
+
+.malevolette-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+//* =========================
+   Slideshow strip (scroll + lift-on-hover)
+   ========================= */
+.slideshow {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
+}
+
+.slide {
+  flex: 0 0 auto;
+  height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* lift only the image being hovered */
+.slide:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 60px 20px;
+  background: #111;
+}
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+.hero p {
+  font-size: 1.2em;
+}
+.hero-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+
+
+/* Tear-to-Reveal */
+.tear-section {
+  position: relative;
+  margin: 40px 0;
+}
+.blackout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 2;
+  animation: reveal 2s ease-out forwards;
+}
+.tear-reveal {
+  width: 100%;
+  display: block;
+  z-index: 1;
+  position: relative;
+}
+.reveal-image {
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.tear-section:hover .reveal-image {
+  opacity: 1;
+}
+
+/* Tear Reveal Animation */
+@keyframes reveal {
+  0% {
+    transform: scaleY(1);
+    height: 100%;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0);
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Product Section */
+.products {
+  padding: 60px 20px;
+  background: #111;
+}
+.products h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Special styling for DAMAGED Apparel heading */
+.damaged-heading {
+  font-family: "RoadRage", "Arial Black", sans-serif;
+  font-size: 2.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #39ff14;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  justify-items: center;
+  align-items: start;
+  padding: 20px 0;
+}
+}
+.product-card {
+  background: #222;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s;
+}
+.product-card:hover {
+  transform: scale(1.05);
+}
+/* Product text & meta */
+.product-title {
+  margin-top: 12px;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+}
+
+.product-tagline {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Bottom row: price + button */
+.product-meta {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Price tag pill */
+.price-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #000;
+  border: 1px solid #39ff14; /* your neon green */
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+}
+
+.price-tag .currency {
+  font-size: 0.8em;
+  opacity: 0.9;
+}
+
+.price-amount {
+  letter-spacing: 0.06em;
+}
+
+/* Buy button */
+.btn-buy {
+  flex: 1;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  background: #39ff14;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-buy:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 16px rgba(57, 255, 20, 0.6);
+  background: #7aff5b;
+}
+
+.btn-buy:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 0 4px rgba(57, 255, 20, 0.8);
+}
+
+/* Card feedback when added */
+.product-card.added {
+  box-shadow: 0 0 24px rgba(57, 255, 20, 0.7);
+  transform: translateY(-3px) scale(1.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Flip Effect */
+.flip-wrapper {
+  position: relative;
+  width: 100%;
+}
+.flip-wrapper img {
+  width: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease;
+} 
+/* Normalize all product images */
+.product-card img {
+  width: 100%;
+  height: 260px;       /* force equal height */
+  object-fit: cover;   /* crop to fit cleanly */
+  border-radius: 8px;
+}
+.flip-wrapper .front {
+  position: relative;
+  z-index: 2;
+}
+.flip-wrapper .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform: rotateY(180deg);
+}
+.product-card:hover .front {
+  transform: rotateY(180deg);
+}
+.product-card:hover .back {
+  transform: rotateY(0);
+  z-index: 2;
+}
+
+/* Intro Overlay */
+#introOverlay {
+  background: rgba(0, 0, 0, 0.95);
+}
+#cashCardIntro {
+  font-family: "Menlo", monospace;
+  text-align: center;
+  transform: rotateY(0deg);
+}
+
+/* Rotate Card Animation */
+@keyframes rotateCard {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+/* Floating Cash */
+.cashBill {
+  opacity: 0;
+  transform: rotate(8deg) scale(1);
+  transition: opacity 0.3s ease;
+}
+
+/* Optional shimmer */
+.cashBill {
+  mix-blend-mode: screen;
+}
+@keyframes floatCash0 {
+  to {
+    left: 20%;
+    top: 30%;
+    opacity: 1;
+  }
+}
+@keyframes floatCash1 {
+  to {
+    left: 40%;
+    top: 50%;
+    opacity: 1;
+  }
+}
+@keyframes floatCash2 {
+  to {
+    left: 60%;
+    top: 40%;
+    opacity: 1;
+  }
+}
+@keyframes floatCash3 {
+  to {
+    left: 80%;
+    top: 20%;
+    opacity: 1;
+  }
+}
+@keyframes floatCash4 {
+  to {
+    left: 50%;
+    top: 70%;
+    opacity: 1;
+  }
+}
+
+/* About Section */
+.about {
+  background: #000;
+  padding: 60px 20px;
+}
+.about h2 {
+  font-size: 2em;
+  color: #39ff14;
+  margin-bottom: 20px;
+}
+.about p,
+.about blockquote {
+  font-size: 1.1em;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+.about blockquote {
+  font-style: italic;
+  color: #ff6f61;
+  padding-left: 20px;
+  border-left: 4px solid #ff6f61;
+}
+
+/* Footer */
+footer {
+  background: #111;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #999;
+}
+footer a {
+  color: #39ff14;
+  text-decoration: none;
+}
