@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silent Supporters | Sands of Time</title>
+
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --card:#141414;
+      --muted:#bdbdbd;
+      --text:#f2f2f2;
+      --accent:#39ff14;   /* your neon green */
+      --accent2:#ff2a2a;  /* brand red */
+      --border:#2a2a2a;
+      --shadow: 0 12px 30px rgba(0,0,0,0.45);
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(1200px 700px at 20% 0%, rgba(255,42,42,0.12), transparent 55%),
+                  radial-gradient(900px 600px at 90% 20%, rgba(57,255,20,0.10), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+    }
+
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    header{
+      padding: 52px 20px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .brand-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 22px;
+    }
+
+    .brand-top .left{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .kicker{
+      color: var(--muted);
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      font-size: 12px;
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height:1.05;
+    }
+
+    .tagline{
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 880px;
+      line-height: 1.55;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 18px;
+    }
+
+    .pill{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    main{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 70px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card{
+      grid-column: span 12;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    @media (min-width: 900px){
+      .card.half{ grid-column: span 6; }
+      .card.third{ grid-column: span 4; }
+      .card.twothird{ grid-column: span 8; }
+    }
+
+    .card h2{
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14.5px;
+    }
+
+    .highlight{
+      color: var(--text);
+    }
+
+    .quote{
+      margin-top: 14px;
+      padding: 14px 14px;
+      border-left: 3px solid var(--accent2);
+      background: rgba(255,42,42,0.06);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 14px;
+    }
+
+    button{
+      cursor:pointer;
+      border:none;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: transform .08s ease, opacity .15s ease;
+    }
+    button:active{ transform: scale(0.98); }
+
+    .btn-primary{
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-ghost{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-danger{
+      background: var(--accent2);
+      color: #fff;
+    }
+
+    .price-row{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .price{
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .note{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .list{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .divider{
+      margin: 20px 0;
+      border: none;
+      border-top: 1px solid var(--border);
+      opacity: 0.9;
+    }
+
+    footer{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    .small{
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hospital-box{
+      margin-top: 12px;
+      border:1px dashed rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.03);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .hospital-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .badge{
+      border:1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand-top">
+      <div class="left">
+        <div class="kicker">Sands of Time • 2SikWittit</div>
+        <h1>Silent Supporters</h1>
+        <p class="tagline">
+          Support that doesn’t need recognition. Quiet giving that becomes a real gift in pediatric cancer hospitals —
+          a reminder that time passes, but resilience remains.
+        </p>
+
+        <div class="pill-row">
+          <span class="pill">Shipping included</span>
+          <span class="pill">Cases are never broken apart</span>
+          <span class="pill">Gift multiples easily</span>
+          <span class="pill">Monthly hospital update list</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+      <!-- WHAT IT IS -->
+      <section class="card twothird">
+        <h2>What are Sands of Time trinkets?</h2>
+        <p>
+          Sands of Time trinkets are handcrafted symbols of resilience — layered with meaning and created to be placed
+          where strength is needed most. Each piece represents quiet endurance, love without spotlight, and healing that
+          continues even when life is heavy.
+        </p>
+        <div class="quote">
+          “People love to be the silent buyer. Knowing they’ll receive the gift is enough sometimes.”
+        </div>
+
+        <hr class="divider" />
+
+        <h2>Where do gifts go?</h2>
+        <p>
+          Silent Supporters receive a monthly list of participating hospitals and centers. Supporters may choose a location,
+          or allow placement where need is greatest.
+        </p>
+
+        <div class="hospital-box">
+          <div class="hospital-title">
+            <strong class="highlight">Participating hospitals (monthly list)</strong>
+            <span class="badge">Coming from your monthly update</span>
+          </div>
+          <ul class="list">
+            <li><em>Western U.S.</em> — (we’ll add your first 5–10 centers)</li>
+            <li><em>Northeast U.S.</em> — (we’ll add your first 5–10 centers)</li>
+            <li><em>More regions</em> — added as the program grows</li>
+          </ul>
+          <p class="note">
+            We’ll start with a small, verified list and grow it monthly. (You said Western + Northeast first — perfect.)
+          </p>
+        </div>
+      </section>
+
+      <!-- SILENT SUPPORTERS RECURRING -->
+      <section class="card third">
+        <h2>Become a Silent Supporter</h2>
+        <p>
+          Monthly recurring support that helps fund case gifting and placement. Quiet impact, consistent presence.
+        </p>
+
+        <div class="price-row">
+          <span>Monthly tiers</span>
+          <span class="price">$25 / $50 / $100</span>
+        </div>
+
+        <div class="actions">
+          <!-- Replace these price IDs with your real recurring Price IDs -->
+          <button class="btn-primary"
+            data-price-id="price_SILENT_25"
+            data-fallback-link="">
+            Support $25/month
+          </button>
+
+          <button class="btn-primary"
+            data-price-id="price_SILENT_50"
+            data-fallback-link="">
+            Support $50/month
+          </button>
+
+          <button class="btn-primary"
+            data-price-id="price_SILENT_100"
+            data-fallback-link="">
+            Support $100/month
+          </button>
+
+          <!-- Optional: custom amount later -->
+          <button class="btn-ghost" id="customSupportBtn">
+            Custom amount (coming next)
+          </button>
+        </div>
+
+        <p class="note">
+          These buttons will use Price IDs (recommended). If you prefer Payment Links instead, paste the buy.stripe.com
+          URLs into <span class="highlight">data-fallback-link</span>.
+        </p>
+      </section>
+
+      <!-- GIFT BY THE CASE -->
+      <section class="card half">
+        <h2>Gift by the Case</h2>
+        <p>
+          A full case contains <strong class="highlight">144 trinkets</strong> and is gifted as a whole — never broken apart.
+          Specially prepared and gift wrapped. Supporters can gift <strong class="highlight">multiple cases</strong> easily.
+        </p>
+
+        <div class="quote">
+          A gift for a gift: for every case gifted, we commit to matching support toward additional Sands of Time placements
+          in children’s cancer hospitals.
+        </div>
+
+        <div class="price-row">
+          <span>By the Case (144)</span>
+          <span class="price">$1,800</span>
+        </div>
+
+        <div class="actions">
+          <!-- Replace price_CASE_1800 with your real Stripe Price ID for the case -->
+          <button class="btn-danger"
+            data-price-id="price_CASE_1800"
+            data-fallback-link="">
+            Gift a Case (144) — $1,800
+          </button>
+
+          <button class="btn-ghost" id="giftMultipleBtn">
+            Gift Multiple Cases (choose quantity)
+          </button>
+        </div>
+
+        <p class="note">
+          To make multiples easy in Stripe: keep one Case product at $1,800 and enable <strong class="highlight">quantity</strong>
+          on the checkout. We’ll do that inside Stripe after your product is created.
+        </p>
+      </section>
+
+      <!-- INDIVIDUAL TRINKET -->
+      <section class="card half">
+        <h2>Individual Gift</h2>
+        <p>
+          For parents, families, and loved ones walking through illness with someone close. A single symbol of resilience —
+          personal, intimate, and deeply meaningful.
+        </p>
+
+        <div class="price-row">
+          <span>Single Trinket</span>
+          <span class="price">$18</span>
+        </div>
+
+        <div class="actions">
+          <!-- Replace price_TRINKET_18 with your real Stripe Price ID -->
+          <button class="btn-primary"
+            data-price-id="price_TRINKET_18"
+            data-fallback-link="">
+            Gift One Trinket — $18
+          </button>
+
+          <button class="btn-ghost" onclick="window.location.href='../privacy/';">
+            Privacy
+          </button>
+
+          <button class="btn-ghost" onclick="window.location.href='../terms/';">
+            Terms
+          </button>
+        </div>
+
+        <p class="note">
+          We keep this simple and respectful: one gift, one intention. (No loud marketing required.)
+        </p>
+      </section>
+
+      <!-- PUPPY-PAWS DONATE $1 -->
+      <section class="card third">
+        <h2>Puppy-Paws</h2>
+        <p>
+          Tap to Save a Life Today — a $1 donation that supports rescue, awareness, and quiet acts of care.
+        </p>
+
+        <div class="price-row">
+          <span>Donate</span>
+          <span class="price">$1</span>
+        </div>
+
+        <div class="actions">
+          <!-- Replace with your Puppy-Paws Price ID -->
+          <button class="btn-primary"
+            data-price-id="price_PUPPYPAWS_1"
+            data-fallback-link="">
+            Donate $1 Now
+          </button>
+        </div>
+
+        <p class="note">
+          Puppy-Paws is a separate mission lane. We’ll build its dedicated landing page next.
+        </p>
+      </section>
+
+      <!-- CONTACT / SUPPORT -->
+      <section class="card twothird">
+        <h2>Contact</h2>
+        <p>
+          Questions, hospital placement requests, or organization partnerships:
+          <a href="mailto:hello@2sikwittit.com">hello@2sikwittit.com</a>
+        </p>
+
+        <ul class="list">
+          <li>We can coordinate hospital delivery directly.</li>
+          <li>Silent Supporters receive monthly hospital updates.</li>
+          <li>Organizations may request case gifting for pediatric cancer units.</li>
+        </ul>
+
+        <p class="small">
+          Note: Donations and gifting initiatives are handled with transparency and care. We do not provide medical advice.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div>
+      © <span id="year"></span> 2SikWittit • Sands of Time • Silent Supporters
+    </div>
+    <div class="small" style="margin-top:8px;">
+      “Your Kindness Is Already Helping”
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /**
+     * IMPORTANT:
+     * You said you want to use Price IDs.
+     * Price IDs require a server-side Stripe checkout flow (recommended via Netlify Function).
+     *
+     * This page supports TWO ways to checkout:
+     * 1) Price ID (preferred): calls window.checkoutWithPriceId(priceId)
+     * 2) Fallback link: opens buy.stripe.com URL if you paste one into data-fallback-link
+     *
+     * Next step: tell me whether your site already has a JS function for Stripe checkout.
+     * If not, I’ll give you the exact Netlify Function + front-end script to make Price IDs work.
+     */
+
+    function handleCheckout(priceId, fallbackLink) {
+      // If you already have a checkout function in your project, we use it.
+      if (typeof window.checkoutWithPriceId === "function") {
+        window.checkoutWithPriceId(priceId);
+        return;
+      }
+
+      // Otherwise, we can use payment links as a quick fallback.
+      if (fallbackLink && fallbackLink.trim().length > 0) {
+        window.location.href = fallbackLink.trim();
+        return;
+      }
+
+      // If neither exists, we show a friendly message.
+      alert(
+        "Checkout isn’t wired yet.\n\n" +
+        "Send me your Price IDs (price_...) and tell me if you’re using a Netlify Function.\n" +
+        "I’ll generate the exact code to make Price-ID checkout work."
+      );
+    }
+
+    // Attach click handlers to all buttons with data-price-id
+    const buyButtons = document.querySelectorAll("button[data-price-id]");
+    buyButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const priceId = btn.getAttribute("data-price-id");
+        const fallbackLink = btn.getAttribute("data-fallback-link") || "";
+        handleCheckout(priceId, fallbackLink);
+      });
+    });
+
+    // Gift Multiple Cases button (same Price ID; quantity handled in checkout)
+    document.getElementById("giftMultipleBtn").addEventListener("click", () => {
+      // Use the same case price ID (Stripe checkout quantity should be enabled)
+      handleCheckout("price_CASE_1800", "");
+    });
+
+    // Custom amount placeholder
+    document.getElementById("customSupportBtn").addEventListener("click", () => {
+      alert("Next step: we’ll add a Custom Amount option once your core products are live.");
+    });
+  </script>
+</body>
+</html>

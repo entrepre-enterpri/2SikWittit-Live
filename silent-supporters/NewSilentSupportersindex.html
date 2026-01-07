@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Silent Supporters | Sands of Time</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+  body {
+    margin: 0;
+    font-family: "Georgia", serif;
+    background-color: #0b0b0b;
+    color: #f4f4f4;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("../images/NewSandsoftimeGift.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .hero-overlay {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 80px 40px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+
+  .tagline {
+    font-size: 1.15rem;
+    font-style: italic;
+    opacity: 0.95;
+    margin-bottom: 35px;
+  }
+
+  .statement {
+    font-size: 1.15rem;
+    max-width: 720px;
+    margin: 0 auto 45px;
+    line-height: 1.8;
+  }
+
+  .cta a {
+    display: inline-block;
+    background-color: #b21f1f;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 34px;
+    border-radius: 40px;
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .cta a:hover {
+    background-color: #8f1919;
+    transform: translateY(-2px);
+  }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+</style>
+
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-overlay">
+      
+      <h1>Silent Supporters</h1>
+
+      <!-- REQUIRED LINE -->
+      <div class="tagline">
+        A gift sent without expectation—received with love.
+      </div>
+
+      <div class="statement">
+        Sands of Time is a quiet act of resilience.  
+        Each trinket represents a moment held, a struggle honored, and a child reminded they are not alone.
+        <br><br>
+        Silent Supporters give not for recognition—but for impact.
+      </div>
+
+      <div class="cta">
+        <a href=" https://buy.stripe.com/bJedRb8ap5F6ewx9eAcfK01" target="_blank" rel="noopener">
+  Gift by the Case
+</a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2SikWittit • Sands of Time • Silent Supporters
+  </footer>
+
+</body>
+</html>
